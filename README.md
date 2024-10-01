@@ -1,5 +1,10 @@
+# Project Directory Structure
+
+Deployed URL: [https://anupkumarmridha.github.io/Tripit-Clone/tripit-clone/dist/](https://anupkumarmridha.github.io/Tripit-Clone/tripit-clone/dist/)
+
 ```
 └── Tripit-clone
+    ├── README.md
     ├── folder_structure_gen.js
     └── tripit-clone
         ├── README.md
