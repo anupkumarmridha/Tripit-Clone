@@ -1,6 +1,8 @@
-const Footer = () => {
+const Footer:React.FC = () => {
   return (
-    <div>Footer</div>
+    <div className="mt-56">
+        Footer
+    </div>
   )
 }
 

@@ -3,11 +3,11 @@ import Footer from './Footer';
 
 import { ReactNode } from 'react';
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <main>{children}</main>
+      <main className="flex-grow">{children}</main>
       <Footer />
     </div>
   );

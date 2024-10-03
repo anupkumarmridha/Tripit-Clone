@@ -11,14 +11,12 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="bg-white shadow-md">
+    <header className="bg-white fixed w-full z-50">
       <div className="container mx-auto px-4 flex justify-between items-center py-4">
-        {/* Logo */}
         <a href="/" className="flex items-center">
           <img src={logo} alt="TripIt" className="h-8" />
         </a>
 
-        {/* Mobile Toggle Button */}
         <button
           className="md:hidden text-gray-700 focus:outline-none"
           onClick={toggleMobileMenu}
@@ -38,12 +36,12 @@ const Header: React.FC = () => {
           style={{ width: isMobileMenuOpen ? '50%' : 'auto' }}
         >
           <ul className="md:flex md:space-x-8 space-y-4 md:space-y-0 py-6 md:py-0 px-4 md:px-0 items-center justify-center">
-            <li><a href="/tripit" className="block text-gray-700 hover:text-[#107ac5]">TripIt</a></li>
-            <li><a href="/tripit-pro" className="block text-gray-700 hover:text-[#107ac5]">TripIt Pro</a></li>
-            <li><a href="/how-it-works" className="block text-gray-700 hover:text-[#107ac5]">How It Works</a></li>
-            <li><a href="/pricing" className="block text-gray-700 hover:text-[#107ac5]">Pricing</a></li>
-            <li><a href="/sap-concur" className="block text-gray-700 hover:text-[#107ac5]">SAP Concur</a></li>
-            <li><a href="/sign-in" className="block text-gray-700 hover:text-[#107ac5]">Sign In</a></li>
+            <li><a href="/tripit" className="block text-gray-950 hover:text-[#107ac5]">TripIt</a></li>
+            <li><a href="/tripit-pro" className="block text-gray-950 hover:text-[#107ac5]">TripIt Pro</a></li>
+            <li><a href="/how-it-works" className="block text-gray-950 hover:text-[#107ac5]">How It Works</a></li>
+            <li><a href="/pricing" className="block text-gray-950 hover:text-[#107ac5]">Pricing</a></li>
+            <li><a href="/sap-concur" className="block text-gray-950 hover:text-[#107ac5]">SAP Concur</a></li>
+            <li><a href="/sign-in" className="block text-gray-950 hover:text-[#107ac5]">Sign In</a></li>
             <li>
               <a
                 href="/sign-up"
