@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from '../assets/logo-tripit.svg';
+import logo from '../../assets/logo-tripit.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe, faSortDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -29,30 +29,30 @@ const Header: React.FC = () => {
           </div>
         </button>
 
-        {/* Navigation Menu */}
+
         <nav
           className={`${isMobileMenuOpen ? 'block' : 'hidden'
             } md:flex items-center justify-center md:space-x-8 w-full md:w-auto absolute md:relative top-16 md:top-auto right-0 md:right-auto bg-white md:bg-transparent shadow-lg md:shadow-none z-10 md:z-auto`}
           style={{ width: isMobileMenuOpen ? '50%' : 'auto' }}
         >
           <ul className="md:flex md:space-x-8 space-y-4 md:space-y-0 py-6 md:py-0 px-4 md:px-0 items-center justify-center">
-            <li><a href="/tripit" className="block text-gray-950 hover:text-[#107ac5]">TripIt</a></li>
-            <li><a href="/tripit-pro" className="block text-gray-950 hover:text-[#107ac5]">TripIt Pro</a></li>
-            <li><a href="/how-it-works" className="block text-gray-950 hover:text-[#107ac5]">How It Works</a></li>
-            <li><a href="/pricing" className="block text-gray-950 hover:text-[#107ac5]">Pricing</a></li>
-            <li><a href="/sap-concur" className="block text-gray-950 hover:text-[#107ac5]">SAP Concur</a></li>
-            <li><a href="/sign-in" className="block text-gray-950 hover:text-[#107ac5]">Sign In</a></li>
+            <li><a href="/tripit" className="block text-gray-950 hover:text-primary">TripIt</a></li>
+            <li><a href="/tripit-pro" className="block text-gray-950 hover:text-primary">TripIt Pro</a></li>
+            <li><a href="/how-it-works" className="block text-gray-950 hover:text-primary">How It Works</a></li>
+            <li><a href="/pricing" className="block text-gray-950 hover:text-primary">Pricing</a></li>
+            <li><a href="/sap-concur" className="block text-gray-950 hover:text-primary">SAP Concur</a></li>
+            <li><a href="/sign-in" className="block text-gray-950 hover:text-primary">Sign In</a></li>
             <li>
               <a
                 href="/sign-up"
-                className="text-[#107ac5] border-2 border-[#107ac5] rounded-sm text-base font-semibold px-3.5 py-2 w-auto text-center hover:bg-[#107ac5] hover:text-white transition duration-500 ease-in-out"
+                className="text-primary border-2 border-primary rounded-sm text-base font-semibold px-3.5 py-2 w-auto text-center hover:bg-primary hover:text-white transition duration-500 ease-in-out"
               >
                 Sign Up—It's Free!
               </a>
             </li>
             <li className="relative">
               <button
-              className="flex items-center text-[#107ac5] border-2 border-[#107ac5] rounded-sm text-xs font-bold px-3.5 py-1.5 w-auto text-center hover:bg-[#107ac5] hover:text-white transition duration-500 ease-in-out"
+              className="flex items-center text-primary border-2 border-primary rounded-sm text-xs font-bold px-3.5 py-1.5 w-auto text-center hover:bg-primary hover:text-white transition duration-500 ease-in-out"
               onClick={() => setDropdownOpen(!isDropdownOpen)}
               >
               <span className="mr-2">
@@ -76,11 +76,11 @@ const Header: React.FC = () => {
             </li>
             <li className="border-t border-gray-300 pt-4 md:border-0 md:pt-0">
               <div className="flex justify-center space-x-6">
-                <a href="https://www.instagram.com/tripitcom/" className="fab fa-instagram text-gray-700 text-xl hover:text-blue-600"></a>
+                {/* <a href="https://www.instagram.com/tripitcom/" className="fab fa-instagram text-gray-700 text-xl hover:text-blue-600"></a>
                 <a href="https://www.facebook.com/tripitcom" className="fab fa-facebook text-gray-700 text-xl hover:text-blue-600"></a>
                 <a href="https://www.twitter.com/tripit" className="fab fa-twitter text-gray-700 text-xl hover:text-blue-600"></a>
                 <a href="https://www.linkedin.com/company/tripit" className="fab fa-linkedin text-gray-700 text-xl hover:text-blue-600"></a>
-                <a href="https://www.youtube.com/user/tripitvideos" className="fab fa-youtube text-gray-700 text-xl hover:text-blue-600"></a>
+                <a href="https://www.youtube.com/user/tripitvideos" className="fab fa-youtube text-gray-700 text-xl hover:text-blue-600"></a> */}
               </div>
             </li>
           </ul>
