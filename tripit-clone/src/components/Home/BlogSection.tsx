@@ -6,11 +6,11 @@ const BlogSection: React.FC = () => {
     <div className="flex justify-center items-center px-4 py-4">
         <div className="container items-center text-center">
             <h2 className="text-gray-950 text-5xl">More from our blog</h2>
-            <div className="blog-list flex justify-center px-4 py-4">
+            <div className="blog-list flex flex-wrap justify-center px-4 py-4">
                 {blogPosts.map((blog, index) => {
                     return (
-                        <div className="blog-item m-4 justify-self-center box-border rounded-md flex flex-col items-center" key={index}>
-                            <div className="flex w-[358px] h-[238px] box-border rounded-md justify-center text-center items-center">
+                        <div className="blog-item m-4 justify-self-center box-border rounded-md flex flex-col items-center w-full sm:w-auto" key={index}>
+                            <div className="flex w-full sm:w-[358px] h-[238px] box-border rounded-md justify-center text-center items-center">
                                 <img src={blog.image} alt="blog" className="w-full h-full object-cover box-border rounded-md" />
                             </div>
                             <div className="flex flex-col text-left mt-4">
