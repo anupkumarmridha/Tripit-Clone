@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from '../assets/logo-tripit.svg';
+import logo from '../../assets/logo-tripit.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe, faSortDown } from '@fortawesome/free-solid-svg-icons';
 
