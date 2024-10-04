@@ -6,7 +6,6 @@ Deployed URL: [https://anupkumarmridha.github.io/Tripit-Clone/tripit-clone/dist/
 └── Tripit-clone
     ├── README.md
     ├── folder_structure_gen.js
-    ├── package.json
     └── tripit-clone
         ├── README.md
         ├── dist
@@ -14,8 +13,9 @@ Deployed URL: [https://anupkumarmridha.github.io/Tripit-Clone/tripit-clone/dist/
         │   │   ├── illu-homepage-gate-us-covid-DTHN7P7W.svg
         │   │   ├── illu-homepage-hero-BlcvXF7g.svg
         │   │   ├── illu-homepage-phone_2x-BgkMbrWE.png
-        │   │   ├── index-DPV9E0_6.css
-        │   │   ├── index-KnmRp6FO.js
+        │   │   ├── illu-homepage-video-C1zzvn8Y.svg
+        │   │   ├── index-D3BrmXLI.css
+        │   │   ├── index-DZsur0_6.js
         │   │   ├── logo-tripit-kSZ9WxFh.svg
         │   │   └── tripit-homepage-nearby-BA82I0S-.png
         │   ├── index.html
@@ -49,26 +49,46 @@ Deployed URL: [https://anupkumarmridha.github.io/Tripit-Clone/tripit-clone/dist/
         │   │   ├── react.svg
         │   │   └── tripit-homepage-nearby.png
         │   ├── components
-        │   │   ├── Footer.tsx
-        │   │   ├── Header.tsx
+        │   │   ├── Common
+        │   │   │   └── CommonSection.tsx
+        │   │   ├── ErrorBoundary
+        │   │   │   └── ErrorBoundary.tsx
+        │   │   ├── FallbackUI
+        │   │   │   └── FallbackUI.tsx
+        │   │   ├── Footer
+        │   │   │   ├── Footer.tsx
+        │   │   │   └── SimpleFooter.tsx
+        │   │   ├── Header
+        │   │   │   └── Header.tsx
         │   │   ├── Home
         │   │   │   ├── BlogSection.tsx
         │   │   │   ├── ContentHome.tsx
-        │   │   │   └── LandingHome.tsx
-        │   │   ├── Layout.tsx
+        │   │   │   ├── LandingHome.tsx
+        │   │   │   └── VideoSection.tsx
+        │   │   ├── Layout
+        │   │   │   └── Layout.tsx
         │   │   └── ui
+        │   │       └── InputField.tsx
         │   ├── content
         │   │   ├── BlogContentData.ts
-        │   │   └── HomeContentData.ts
+        │   │   ├── FooterData.ts
+        │   │   ├── HomeContentData.ts
+        │   │   └── SimpleFooterData.ts
         │   ├── index.css
         │   ├── main.tsx
         │   ├── pages
-        │   │   └── HomePage.tsx
+        │   │   ├── ErrorPage
+        │   │   │   └── ErrorPage.tsx
+        │   │   ├── HomePage
+        │   │   │   └── HomePage.tsx
+        │   │   └── SignUpPage
         │   ├── routes
         │   │   └── index.tsx
         │   ├── services
         │   ├── styles
         │   │   └── Header.css
+        │   ├── types
+        │   │   └── types.ts
         │   ├── utils
         │   └── vite-env.d.ts
         ├── tailwind.config.js
