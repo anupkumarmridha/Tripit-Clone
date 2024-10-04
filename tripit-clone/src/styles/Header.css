@@ -1,0 +1,136 @@
+/* General Styles */
+.navbar {
+    background-color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar-header .logo img {
+    max-height: 40px;
+  }
+  
+  .navbar-toggle {
+    background: none;
+    border: none;
+    display: none;
+  }
+  
+  .icon-bar {
+    width: 22px;
+    height: 2px;
+    background-color: #333;
+    margin: 4px 0;
+  }
+  
+  .navbar-collapse {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-collapse ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .navbar-collapse ul li {
+    margin-right: 20px;
+  }
+  
+  .navbar-collapse ul li a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .signup-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+  }
+  
+  .language-switch {
+    position: relative;
+  }
+  
+  .language-switch button {
+    background-color: transparent;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    margin-left: 10px;
+  }
+  
+  .language-switch .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .language-switch:hover .dropdown-menu {
+    display: block;
+  }
+  
+  .social-links {
+    display: flex;
+    margin-left: 20px;
+  }
+  
+  .social-links li {
+    margin-left: 10px;
+  }
+  
+  .social-links a {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .social-links a:hover {
+    color: #007bff;
+  }
+  
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .navbar-toggle {
+      display: block;
+    }
+  
+    .navbar-collapse {
+      display: none;
+      flex-direction: column;
+      background-color: white;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 1000;
+    }
+  
+    .navbar-collapse.open {
+      display: flex;
+    }
+  
+    .navbar-collapse ul {
+      flex-direction: column;
+      margin-top: 20px;
+    }
+  
+    .navbar-collapse ul li {
+      margin: 10px 0;
+    }
+  
+    .language-switch {
+      margin-top: 20px;
+    }
+  
+    .social-links {
+      margin-top: 20px;
+      justify-content: center;
+    }
+  }
