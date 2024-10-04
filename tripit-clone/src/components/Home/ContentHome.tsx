@@ -21,12 +21,10 @@ const ContentHome: React.FC<ContentProps> = ({ content, index }) => {
         index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
       } justify-center mx-auto pb-20 px-4 py-12 md:px-0`}
     >
-      {/* Image Section */}
       <div className="w-full md:w-1/2 lg:w-1/3 flex justify-center md:justify-start mb-6 md:mb-0">
         <img className="w-full max-w-xs md:max-w-4xl" src={content.img} alt="" />
       </div>
 
-      {/* Content Section */}
       <div className="w-full md:w-1/2 lg:w-1/3 flex flex-col space-y-4 px-4 md:px-0">
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900">{content.title}</h1>
 

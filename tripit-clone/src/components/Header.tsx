@@ -29,7 +29,7 @@ const Header: React.FC = () => {
           </div>
         </button>
 
-        {/* Navigation Menu */}
+
         <nav
           className={`${isMobileMenuOpen ? 'block' : 'hidden'
             } md:flex items-center justify-center md:space-x-8 w-full md:w-auto absolute md:relative top-16 md:top-auto right-0 md:right-auto bg-white md:bg-transparent shadow-lg md:shadow-none z-10 md:z-auto`}
@@ -76,11 +76,11 @@ const Header: React.FC = () => {
             </li>
             <li className="border-t border-gray-300 pt-4 md:border-0 md:pt-0">
               <div className="flex justify-center space-x-6">
-                <a href="https://www.instagram.com/tripitcom/" className="fab fa-instagram text-gray-700 text-xl hover:text-blue-600"></a>
+                {/* <a href="https://www.instagram.com/tripitcom/" className="fab fa-instagram text-gray-700 text-xl hover:text-blue-600"></a>
                 <a href="https://www.facebook.com/tripitcom" className="fab fa-facebook text-gray-700 text-xl hover:text-blue-600"></a>
                 <a href="https://www.twitter.com/tripit" className="fab fa-twitter text-gray-700 text-xl hover:text-blue-600"></a>
                 <a href="https://www.linkedin.com/company/tripit" className="fab fa-linkedin text-gray-700 text-xl hover:text-blue-600"></a>
-                <a href="https://www.youtube.com/user/tripitvideos" className="fab fa-youtube text-gray-700 text-xl hover:text-blue-600"></a>
+                <a href="https://www.youtube.com/user/tripitvideos" className="fab fa-youtube text-gray-700 text-xl hover:text-blue-600"></a> */}
               </div>
             </li>
           </ul>
