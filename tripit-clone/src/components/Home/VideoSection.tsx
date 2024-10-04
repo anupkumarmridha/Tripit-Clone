@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect} from "react";
 import backgroundImage from "../../assets/illu-homepage-video.svg";
 import PlayBtn from "../../assets/assets_btn-play.svg";
 const VideoSection = () => {
