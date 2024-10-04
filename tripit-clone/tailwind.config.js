@@ -5,7 +5,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'tripit-blue': '#0070c9',
+        'primary': '#107ac5',
+        'secondary': '#1172C5',
+      },
+    },
   },
   plugins: [],
 }
