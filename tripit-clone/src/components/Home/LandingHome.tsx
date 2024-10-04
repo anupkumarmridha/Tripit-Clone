@@ -16,7 +16,7 @@ const LandingHome: React.FC = () => {
             Imagine checking one place for your travel details and getting a heads up as things happen throughout your trip. See why life without TripIt is a distant memory for millions of travelers.
           </p>
           <div>
-            <button className="bg-[#107ac5] w-[30%] text-white px-6 py-3 rounded-sm hover:bg-[#3a7bad] transition-all">
+            <button className="bg-primary w-[60%] text-white px-6 py-3 box-border rounded-sm hover:bg-secondary transition-all">
               Get Started
             </button>
           </div>

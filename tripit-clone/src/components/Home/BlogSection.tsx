@@ -14,7 +14,7 @@ const BlogSection: React.FC = () => {
                                 <img src={blog.image} alt="blog" className="w-full h-full object-cover box-border rounded-md" />
                             </div>
                             <div className="flex flex-col text-left mt-4">
-                                <a href={blog.link} className="mb-4 text-gray-950 text-md hover:text-[#107ac5] font-semibold">{blog.title}</a>
+                                <a href={blog.link} className="mb-4 text-gray-950 text-md hover:text-primary font-semibold">{blog.title}</a>
                                 <p className="box-border">{blog.description}</p>
                             </div>
                         </div>
