@@ -1,6 +1,6 @@
 # Project Directory Structure
 
-Deployed URL: [https://anupkumarmridha.github.io/Tripit-Clone/tripit-clone/dist/](https://anupkumarmridha.github.io/Tripit-Clone/tripit-clone/dist/)
+Deployed URL: [https://tripit-clone-kohl.vercel.app/web](https://tripit-clone-kohl.vercel.app/web)
 
 ```
 └── Tripit-clone
@@ -15,7 +15,7 @@ Deployed URL: [https://anupkumarmridha.github.io/Tripit-Clone/tripit-clone/dist/
         │   │   ├── illu-homepage-phone_2x-BgkMbrWE.png
         │   │   ├── illu-homepage-video-C1zzvn8Y.svg
         │   │   ├── index-D3BrmXLI.css
-        │   │   ├── index-DZsur0_6.js
+        │   │   ├── index-DfokbDc_.js
         │   │   ├── logo-tripit-kSZ9WxFh.svg
         │   │   └── tripit-homepage-nearby-BA82I0S-.png
         │   ├── index.html
