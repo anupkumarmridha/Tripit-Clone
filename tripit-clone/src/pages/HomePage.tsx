@@ -3,6 +3,8 @@ import LandingHome from "../components/Home/LandingHome"
 import Layout from "../components/Layout"
 import { home_page_content } from "../content/HomeContentData"
 
+import BlogSection from "../components/Home/BlogSection"
+
 const HomePage: React.FC = () => {
   return (
     <Layout>
@@ -13,7 +15,9 @@ const HomePage: React.FC = () => {
             <ContentHome key={index} content={content} index={index}/>
           )
         })}
+        <BlogSection/>
       </div>
+
     </Layout>
   )
 }

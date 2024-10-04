@@ -11,7 +11,7 @@ interface ContentProps {
       author: string;
     };
   };
-  index: number; // Add the index as a prop
+  index: number; 
 }
 
 const ContentHome: React.FC<ContentProps> = ({ content, index }) => {
