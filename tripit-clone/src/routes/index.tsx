@@ -1,10 +1,21 @@
-import { createBrowserRouter, RouteObject } from 'react-router-dom';
+import { createBrowserRouter, RouteObject, Navigate } from 'react-router-dom';
 import HomePage from '../pages/HomePage/HomePage';
+import ErrorPage from '../pages/ErrorPage/ErrorPage';
 
 const routes: RouteObject[] = [
     {
+        path: "/",
+        element: <Navigate to="/web" replace />
+    },
+    {
+        path: "/web",
+        element: (
+        <HomePage />
+        )
+    },
+    {
         path: "*",
-        element: <HomePage />
+        element: <ErrorPage />
     }
 ];
 
