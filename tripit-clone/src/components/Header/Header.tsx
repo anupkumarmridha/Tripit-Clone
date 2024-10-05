@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
 import logo from '../../assets/logo-tripit.svg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGlobe, faSortDown } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import Dropdown from '../ui/Dropdown';
+import SocialIcons from '../ui/SocialIcons';
 
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  const languageOptions = [
+    { label: 'English (UK)', href: '/en-uk' },
+    { label: 'Français', href: '/fr' },
+    { label: 'Deutsch', href: '/de' },
+    { label: 'Español (Latinoamérica)', href: '/es-co' },
+    { label: 'Español (España)', href: '/es' },
+  ];
 
   return (
     <header className="bg-white fixed w-full z-50">
@@ -30,11 +37,9 @@ const Header: React.FC = () => {
           </div>
         </button>
 
-
         <nav
           className={`${isMobileMenuOpen ? 'block' : 'hidden'
             } md:flex items-center justify-center md:space-x-8 w-full md:w-auto absolute md:relative top-16 md:top-auto right-0 md:right-auto bg-white md:bg-transparent shadow-lg md:shadow-none z-10 md:z-auto`}
-          style={{ width: isMobileMenuOpen ? '50%' : 'auto' }}
         >
           <ul className="md:flex md:space-x-8 space-y-4 md:space-y-0 py-6 md:py-0 px-4 md:px-0 items-center justify-center">
             <li><Link to="/tripit" className="block text-gray-950 hover:text-primary">TripIt</Link></li>
@@ -51,38 +56,11 @@ const Header: React.FC = () => {
                 Sign Up—It's Free!
               </Link>
             </li>
-            <li className="relative">
-              <button
-              className="flex items-center text-primary border-2 border-primary rounded-sm text-xs font-bold px-3.5 py-1.5 w-auto text-center hover:bg-primary hover:text-white transition duration-500 ease-in-out"
-              onClick={() => setDropdownOpen(!isDropdownOpen)}
-              >
-              <span className="mr-2">
-              <FontAwesomeIcon icon={faGlobe} />
-              </span>
-              EN
-              
-              <span className="ml-2 mb-2">
-              <FontAwesomeIcon icon={faSortDown} className='text-xs'/>
-              </span>
-              </button>
-              {isDropdownOpen && (
-              <div className="absolute right-0 mt-2 md:mt-0 md:top-full w-48 bg-white border border-gray-300 rounded-md shadow-lg">
-              <a href="/en-uk" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">English (UK)</a>
-              <a href="/fr" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Français</a>
-              <a href="/de" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Deutsch</a>
-              <a href="/es-co" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Español (Latinoamérica)</a>
-              <a href="/es" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Español (España)</a>
-              </div>
-              )}
+            <li>
+              <Dropdown options={languageOptions} />
             </li>
-            <li className="border-t border-gray-300 pt-4 md:border-0 md:pt-0">
-              <div className="flex justify-center space-x-6">
-                {/* <a href="https://www.instagram.com/tripitcom/" className="fab fa-instagram text-gray-700 text-xl hover:text-blue-600"></a>
-                <a href="https://www.facebook.com/tripitcom" className="fab fa-facebook text-gray-700 text-xl hover:text-blue-600"></a>
-                <a href="https://www.twitter.com/tripit" className="fab fa-twitter text-gray-700 text-xl hover:text-blue-600"></a>
-                <a href="https://www.linkedin.com/company/tripit" className="fab fa-linkedin text-gray-700 text-xl hover:text-blue-600"></a>
-                <a href="https://www.youtube.com/user/tripitvideos" className="fab fa-youtube text-gray-700 text-xl hover:text-blue-600"></a> */}
-              </div>
+            <li className="border-t border-gray-300 pt-4 md:hidden">
+              <SocialIcons />
             </li>
           </ul>
         </nav>
