@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setEmail, setPassword, setHomeCity, setEmailError, setPasswordError, setCityError } from '../../redux/authSlice';
+import { setEmail, setPassword, setHomeCity, setEmailError, setPasswordError, setCityError, resetForm } from '../../redux/authSlice';
 import { RootState } from '../../redux/store';
 import Button from '../ui/Button';
 import InputField from '../ui/InputField';
@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 
 import logo from '../../assets/logo-tripit.svg';
 import OAuthButtons from './OAuthButtons';
+import { useSignup, useLogin } from '../../hooks/useAuth';  
 
 const Auth: React.FC<{ isLogin: boolean }> = ({ isLogin }) => {
   const dispatch = useDispatch();
@@ -21,6 +22,10 @@ const Auth: React.FC<{ isLogin: boolean }> = ({ isLogin }) => {
 
   // Get city options from the API
   const { data: cityOptions, isLoading } = useCityAutocomplete(inputValue);
+
+  // Use the custom hooks for signup and login
+  const signupMutation = useSignup();
+  const loginMutation = useLogin();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -50,17 +55,64 @@ const Auth: React.FC<{ isLogin: boolean }> = ({ isLogin }) => {
     dispatch(setPasswordError(passwordValidationError));
     dispatch(setCityError(cityValidationError));
 
-    if (emailValidationError || passwordValidationError || cityValidationError) {
+    if (emailValidationError || passwordValidationError || (!isLogin && cityValidationError)) {
       isValid = false;
     }
 
     return isValid;
   };
 
+  // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   if (handleValidation()) {
+  //     if (isLogin) {
+  //       loginMutation.mutate({ email, password });
+  //     } else {
+  //       signupMutation.mutate({ email, password, homeCity });
+  //     }
+  //   }
+  // };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (handleValidation()) {
-      // Handle form submission
+      console.log('Form is valid. Submitting data...');
+      
+      if (isLogin) {
+        console.log('Attempting to log in with:', { email, password });
+        loginMutation.mutate(
+          { email, password },
+          {
+            onSuccess: (data) => {
+              console.log('Login successful. Token received:', data);
+              dispatch(resetForm());// Clear the form after successful login
+              
+            },
+            onError: (error) => {
+              console.error('Login failed:', error);
+            },
+          }
+        );
+      } else {
+        console.log('Attempting to sign up with:', { email, password, homeCity });
+        signupMutation.mutate(
+          { email, password, homeCity },
+          {
+            onSuccess: (data) => {
+              console.log('Signup successful. Token received:', data);
+            
+              dispatch(resetForm());// Clear the form after successful signup
+              setInputValue('');  // Clear local state
+            },
+            onError: (error) => {
+              console.error('Signup failed:', error);
+            },
+          }
+        );
+      }
+    } else {
+      console.log('Form is invalid.');
     }
   };
 
@@ -91,7 +143,6 @@ const Auth: React.FC<{ isLogin: boolean }> = ({ isLogin }) => {
           error={passwordError}
         />
 
-
         {!isLogin && (
           <>
             <CityDropdown
@@ -100,8 +151,8 @@ const Auth: React.FC<{ isLogin: boolean }> = ({ isLogin }) => {
               isLoading={isLoading}
               cityOptions={cityOptions || []}
               onCitySelect={handleCitySelect}
-              hideDropdown={hideDropdown}  
-              showDropdown={showDropdown}  
+              hideDropdown={hideDropdown}
+              showDropdown={showDropdown}
               error={cityError}
             />
 
@@ -135,7 +186,6 @@ const Auth: React.FC<{ isLogin: boolean }> = ({ isLogin }) => {
           disabled={!isLogin && !agreedToTerms} 
         />
       </form>
-
 
       <OAuthButtons />
       <p className="mt-6 text-center text-gray-600">

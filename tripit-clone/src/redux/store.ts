@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './authSlice';
 import oauthReducer from './oauthSlice'; 
+import onboardingReducer from './onboardingSlice';
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
     oauth: oauthReducer,  
+    onboarding: onboardingReducer, 
   },
 });
 

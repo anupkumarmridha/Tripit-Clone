@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface AuthState {
   email: string;
@@ -7,6 +7,7 @@ interface AuthState {
   emailError: string;
   passwordError: string;
   cityError: string;
+  token: string | null;
 }
 
 const initialState: AuthState = {
@@ -16,30 +17,45 @@ const initialState: AuthState = {
   emailError: '',
   passwordError: '',
   cityError: '',
+  token: null,
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setEmail: (state, action) => {
+    setEmail: (state, action: PayloadAction<string>) => {
       state.email = action.payload;
     },
-    setPassword: (state, action) => {
+    setPassword: (state, action: PayloadAction<string>) => {
       state.password = action.payload;
     },
-    setHomeCity: (state, action) => {
+    setHomeCity: (state, action: PayloadAction<string>) => {
       state.homeCity = action.payload;
     },
-    setEmailError: (state, action) => {
+    setEmailError: (state, action: PayloadAction<string>) => {
       state.emailError = action.payload;
     },
-    setPasswordError: (state, action) => {
+    setPasswordError: (state, action: PayloadAction<string>) => {
       state.passwordError = action.payload;
     },
-    setCityError: (state, action) => {
+    setCityError: (state, action: PayloadAction<string>) => {
       state.cityError = action.payload;
     },
+    setToken: (state, action: PayloadAction<string | null>) => {
+      state.token = action.payload;
+    },
+    logout: (state) => {
+      state.token = null;
+    },
+    resetForm: (state) => {
+      state.email = '';
+      state.password = '';
+      state.homeCity = '';
+      state.emailError = '';
+      state.passwordError = '';
+      state.cityError = '';
+    }
   },
 });
 
@@ -50,6 +66,9 @@ export const {
   setEmailError,
   setPasswordError,
   setCityError,
+  setToken,
+  logout,
+  resetForm,
 } = authSlice.actions;
 
 export default authSlice.reducer;

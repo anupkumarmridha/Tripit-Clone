@@ -12,10 +12,10 @@ const OAuthButtons: React.FC = () => {
       <div className="mt-4 flex items-center justify-center space-x-4">
         <button 
           onClick={() => loginWithGoogle()} 
-          className="p-2 border border-gray-300 rounded-full"
-          disabled={googleLoading} // Disable button xwhile loading
+          className="bg-white border border-primary rounded-sm px-2 py-1 text-primary"
+          disabled={googleLoading} // Disable button while loading
         >
-          <FaGoogle className="text-2xl text-gray-600" />
+          <FaGoogle className="text-2xl" />
         </button>
         <button 
           onClick={() => loginWithFacebook()} 

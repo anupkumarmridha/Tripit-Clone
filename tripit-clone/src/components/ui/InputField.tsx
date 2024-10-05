@@ -5,6 +5,7 @@ interface InputFieldProps {
   label: string;
   type: string;
   value: string;
+  name?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
   error?: string;
@@ -14,6 +15,7 @@ const InputField: React.FC<InputFieldProps> = ({
   label,
   type,
   value,
+  name,
   onChange,
   placeholder,
   error
@@ -35,6 +37,7 @@ const InputField: React.FC<InputFieldProps> = ({
         <input
           type={inputType}
           value={value}
+          name={name}
           onChange={onChange}
           placeholder={placeholder}
           className="mb-2 w-full px-3 py-2 border rounded"
