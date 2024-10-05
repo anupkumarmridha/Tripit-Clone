@@ -1,11 +1,14 @@
 # Project Directory Structure
 
-Deployed URL: [https://tripit-clone-kohl.vercel.app/web](https://tripit-clone-kohl.vercel.app/web)
+Deployed URL: [https://tripit-clone-kohl.vercel.app/](https://tripit-clone-kohl.vercel.app/)
 
 ```
 └── Tripit-clone
     ├── README.md
     ├── folder_structure_gen.js
+    ├── server
+    │   ├── package.json
+    │   └── server.js
     └── tripit-clone
         ├── README.md
         ├── dist
@@ -29,6 +32,8 @@ Deployed URL: [https://tripit-clone-kohl.vercel.app/web](https://tripit-clone-ko
         ├── src
         │   ├── App.css
         │   ├── App.tsx
+        │   ├── Hoc
+        │   │   └── ProtectedRoute.tsx
         │   ├── assets
         │   │   ├── assets_btn-appstore.svg
         │   │   ├── assets_btn-googleplay.svg
@@ -49,6 +54,10 @@ Deployed URL: [https://tripit-clone-kohl.vercel.app/web](https://tripit-clone-ko
         │   │   ├── react.svg
         │   │   └── tripit-homepage-nearby.png
         │   ├── components
+        │   │   ├── Auth
+        │   │   │   ├── Auth.tsx
+        │   │   │   ├── OAuthButtons.tsx
+        │   │   │   └── Tests
         │   │   ├── Common
         │   │   │   └── CommonSection.tsx
         │   │   ├── ErrorBoundary
@@ -67,13 +76,25 @@ Deployed URL: [https://tripit-clone-kohl.vercel.app/web](https://tripit-clone-ko
         │   │   │   └── VideoSection.tsx
         │   │   ├── Layout
         │   │   │   └── Layout.tsx
+        │   │   ├── Onboarding
+        │   │   │   └── Onboarding.tsx
         │   │   └── ui
-        │   │       └── InputField.tsx
+        │   │       ├── Button.tsx
+        │   │       ├── CityDropdown.tsx
+        │   │       ├── Dropdown.tsx
+        │   │       ├── InputField.tsx
+        │   │       └── SocialIcons.tsx
+        │   ├── config
+        │   │   └── config.ts
         │   ├── content
         │   │   ├── BlogContentData.ts
         │   │   ├── FooterData.ts
         │   │   ├── HomeContentData.ts
         │   │   └── SimpleFooterData.ts
+        │   ├── hooks
+        │   │   ├── useAuth.ts
+        │   │   ├── useCityAutocomplete.ts
+        │   │   └── useOAuth.ts
         │   ├── index.css
         │   ├── main.tsx
         │   ├── pages
@@ -81,15 +102,27 @@ Deployed URL: [https://tripit-clone-kohl.vercel.app/web](https://tripit-clone-ko
         │   │   │   └── ErrorPage.tsx
         │   │   ├── HomePage
         │   │   │   └── HomePage.tsx
+        │   │   ├── LoginPage
+        │   │   │   └── LoginPage.tsx
         │   │   └── SignUpPage
+        │   │       └── SignUpPage.tsx
+        │   ├── redux
+        │   │   ├── authSlice.ts
+        │   │   ├── oauthSlice.ts
+        │   │   ├── onboardingSlice.ts
+        │   │   └── store.ts
         │   ├── routes
         │   │   └── index.tsx
         │   ├── services
+        │   │   ├── authService.ts
+        │   │   └── cityService.ts
         │   ├── styles
         │   │   └── Header.css
         │   ├── types
         │   │   └── types.ts
         │   ├── utils
+        │   │   ├── validateAuth.ts
+        │   │   └── validateOnboarding.ts
         │   └── vite-env.d.ts
         ├── tailwind.config.js
         ├── tsconfig.app.json
