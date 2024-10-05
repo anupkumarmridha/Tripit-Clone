@@ -3,38 +3,40 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setEmail, setPassword, setHomeCity, setEmailError, setPasswordError, setCityError } from '../../redux/authSlice';
 import { RootState } from '../../redux/store';
 import Button from '../ui/Button';
-import InputField from '../../components/ui/InputField';
-import CityDropdown from '../../components/ui/CityDropdown';
-import { useCityAutocomplete } from '../../hooks/useCityAutocomplete'; // Custom hook
+import InputField from '../ui/InputField';
+import CityDropdown from '../ui/CityDropdown';
+import { useCityAutocomplete } from '../../hooks/useCityAutocomplete';
 import { validateEmail, validatePassword, validateCity } from '../../utils/validateAuth';
 import { Link } from 'react-router-dom';
+
+import logo from '../../assets/logo-tripit.svg';
+import OAuthButtons from './OAuthButtons';
 
 const Auth: React.FC<{ isLogin: boolean }> = ({ isLogin }) => {
   const dispatch = useDispatch();
   const { email, password, homeCity, emailError, passwordError, cityError } = useSelector((state: RootState) => state.auth);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [inputValue, setInputValue] = useState('');
+  const [showDropdown, setShowDropdown] = useState(false);
 
   // Get city options from the API
   const { data: cityOptions, isLoading } = useCityAutocomplete(inputValue);
-
-  const [filteredOptions, setFilteredOptions] = useState(cityOptions || []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setInputValue(value);
     dispatch(setHomeCity(value));
-    setFilteredOptions(cityOptions || []); // Update options as user types
+    setShowDropdown(true);
   };
 
   const handleCitySelect = (city: string) => {
     setInputValue(city);
     dispatch(setHomeCity(city));
-    clearOptions(); // Clear the options after selection
+    setShowDropdown(false);
   };
 
-  const clearOptions = () => {
-    setFilteredOptions([]); // Clear options to collapse the dropdown
+  const hideDropdown = () => {
+    setShowDropdown(false);
   };
 
   const handleValidation = () => {
@@ -64,6 +66,9 @@ const Auth: React.FC<{ isLogin: boolean }> = ({ isLogin }) => {
 
   return (
     <div className="max-w-sm mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
+      <div className='text-center'>
+        <img src={logo} alt="Logo" className="w-32 mx-auto mb-6" />
+      </div>
       <h2 className="text-center text-2xl font-semibold text-gray-700 mb-6">
         {isLogin ? 'Sign In' : 'Sign Up'}
       </h2>
@@ -86,15 +91,17 @@ const Auth: React.FC<{ isLogin: boolean }> = ({ isLogin }) => {
           error={passwordError}
         />
 
+
         {!isLogin && (
           <>
             <CityDropdown
               inputValue={inputValue}
               onInputChange={handleInputChange}
               isLoading={isLoading}
-              cityOptions={filteredOptions || []}
+              cityOptions={cityOptions || []}
               onCitySelect={handleCitySelect}
-              clearOptions={clearOptions}  // Pass clearOptions function
+              hideDropdown={hideDropdown}  
+              showDropdown={showDropdown}  
               error={cityError}
             />
 
@@ -125,25 +132,20 @@ const Auth: React.FC<{ isLogin: boolean }> = ({ isLogin }) => {
           label={isLogin ? 'Sign In' : 'Create an Account'}
           variant="primary"
           className="w-full mt-6"
-          disabled={!isLogin && !agreedToTerms} // Disable button if terms are not agreed during sign-up
+          disabled={!isLogin && !agreedToTerms} 
         />
       </form>
 
+
+      <OAuthButtons />
       <p className="mt-6 text-center text-gray-600">
-        {isLogin ? "Don't have an account? " : "Already have an account? "}
         <Link
           to={isLogin ? '/account/create' : '/account/login'}
-          className="text-blue-500 hover:underline"
+          className="font-semibold text-primary hover:text-secondary"
         >
-          {isLogin ? 'Create one' : 'Sign In'}
+          {isLogin ? "Don't have an account?" : 'Already a TripIt user? Sign In'}
         </Link>
       </p>
-      <div className="mt-6 flex items-center justify-center">
-        <div className="flex items-center space-x-4">
-          <Button variant="secondary" label="Google" />
-          <Button variant="secondary" label="Facebook" />
-        </div>
-      </div>
     </div>
   );
 };

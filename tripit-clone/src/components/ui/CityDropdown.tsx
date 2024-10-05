@@ -6,7 +6,8 @@ interface CityDropdownProps {
   isLoading: boolean;
   cityOptions: Array<{ label: string }>;
   onCitySelect: (city: string) => void;
-  clearOptions: () => void;  // Added prop
+  hideDropdown: () => void; 
+  showDropdown: boolean; 
   error?: string;
 }
 
@@ -16,14 +17,15 @@ const CityDropdown: React.FC<CityDropdownProps> = ({
   isLoading,
   cityOptions,
   onCitySelect,
-  clearOptions,
+  hideDropdown, 
+  showDropdown, 
   error,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleCitySelection = (city: string) => {
     onCitySelect(city);
-    clearOptions(); // Clear options after selection
+    hideDropdown(); // Hide dropdown after selection
     if (inputRef.current) {
       inputRef.current.blur(); // Remove focus from input to hide dropdown
     }
@@ -50,7 +52,8 @@ const CityDropdown: React.FC<CityDropdownProps> = ({
           </div>
         )}
 
-        {!isLoading && inputValue && cityOptions.length > 0 && (
+        {/* Show dropdown only when `showDropdown` is true */}
+        {!isLoading && showDropdown && inputValue && cityOptions.length > 0 && (
           <ul className="absolute z-10 bg-white border border-gray-300 rounded w-full max-h-40 overflow-y-auto">
             {cityOptions.map((city, index) => (
               <li
@@ -64,7 +67,8 @@ const CityDropdown: React.FC<CityDropdownProps> = ({
           </ul>
         )}
 
-        {!isLoading && inputValue && cityOptions.length === 0 && (
+        {/* "No results found" should only display when dropdown is visible */}
+        {!isLoading && showDropdown && inputValue && cityOptions.length === 0 && (
           <div className="absolute z-10 bg-white border border-gray-300 rounded w-full max-h-40 overflow-y-auto px-4 py-2 text-gray-500">
             No results found.
           </div>
