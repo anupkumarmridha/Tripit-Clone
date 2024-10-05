@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import logo from '../../assets/logo-tripit.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe, faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -36,19 +37,19 @@ const Header: React.FC = () => {
           style={{ width: isMobileMenuOpen ? '50%' : 'auto' }}
         >
           <ul className="md:flex md:space-x-8 space-y-4 md:space-y-0 py-6 md:py-0 px-4 md:px-0 items-center justify-center">
-            <li><a href="/tripit" className="block text-gray-950 hover:text-primary">TripIt</a></li>
+            <li><Link to="/tripit" className="block text-gray-950 hover:text-primary">TripIt</Link></li>
             <li><a href="/tripit-pro" className="block text-gray-950 hover:text-primary">TripIt Pro</a></li>
             <li><a href="/how-it-works" className="block text-gray-950 hover:text-primary">How It Works</a></li>
             <li><a href="/pricing" className="block text-gray-950 hover:text-primary">Pricing</a></li>
             <li><a href="/sap-concur" className="block text-gray-950 hover:text-primary">SAP Concur</a></li>
-            <li><a href="/sign-in" className="block text-gray-950 hover:text-primary">Sign In</a></li>
+            <li><Link to="/account/login" className="block text-gray-950 hover:text-primary">Sign In</Link></li>
             <li>
-              <a
-                href="/sign-up"
+              <Link
+                to="/account/create"
                 className="text-primary border-2 border-primary rounded-sm text-base font-semibold px-3.5 py-2 w-auto text-center hover:bg-primary hover:text-white transition duration-500 ease-in-out"
               >
                 Sign Up—It's Free!
-              </a>
+              </Link>
             </li>
             <li className="relative">
               <button
