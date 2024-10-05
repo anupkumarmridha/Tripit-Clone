@@ -7,7 +7,7 @@ import InputField from '../ui/InputField';
 import CityDropdown from '../ui/CityDropdown';
 import { useCityAutocomplete } from '../../hooks/useCityAutocomplete';
 import { validateEmail, validatePassword, validateCity } from '../../utils/validateAuth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import logo from '../../assets/logo-tripit.svg';
 import OAuthButtons from './OAuthButtons';
@@ -15,6 +15,7 @@ import { useSignup, useLogin } from '../../hooks/useAuth';
 
 const Auth: React.FC<{ isLogin: boolean }> = ({ isLogin }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { email, password, homeCity, emailError, passwordError, cityError } = useSelector((state: RootState) => state.auth);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [inputValue, setInputValue] = useState('');
@@ -87,6 +88,7 @@ const Auth: React.FC<{ isLogin: boolean }> = ({ isLogin }) => {
             onSuccess: (data) => {
               console.log('Login successful. Token received:', data);
               dispatch(resetForm());// Clear the form after successful login
+       
               
             },
             onError: (error) => {
@@ -104,6 +106,7 @@ const Auth: React.FC<{ isLogin: boolean }> = ({ isLogin }) => {
             
               dispatch(resetForm());// Clear the form after successful signup
               setInputValue('');  // Clear local state
+              navigate('/app/onboarding');
             },
             onError: (error) => {
               console.error('Signup failed:', error);

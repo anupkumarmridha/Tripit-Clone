@@ -20,6 +20,7 @@ const Onboarding = () => {
     // Check for validation errors before submission
     if (!errors.firstName && !errors.lastName && !errors.dob && !errors.homeCity) {
       console.log('Form is valid. Submitting form...');
+      dispatch(resetForm());
     }
   };
 
