@@ -57,7 +57,7 @@ const Header: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Dropdown options={languageOptions} />
+              <Dropdown defaultOption={'EN'} options={languageOptions} />
             </li>
             <li className="border-t border-gray-300 pt-4 md:hidden">
               <SocialIcons />

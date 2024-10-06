@@ -3,10 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe, faSortDown } from '@fortawesome/free-solid-svg-icons';
 
 interface DropdownProps {
+  defaultOption: string;
   options: { label: string, href: string }[];
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ options }) => {
+const Dropdown: React.FC<DropdownProps> = ({ defaultOption, options }) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -22,7 +23,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options }) => {
         <span className="mr-2">
           <FontAwesomeIcon icon={faGlobe} />
         </span>
-        EN
+        {defaultOption}
         <span className="ml-2 mb-2">
           <FontAwesomeIcon icon={faSortDown} className="text-xs" />
         </span>
