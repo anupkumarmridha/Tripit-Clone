@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import eye icons from react-icons
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 interface InputFieldProps {
   label: string;
@@ -9,6 +9,7 @@ interface InputFieldProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
   error?: string;
+  required?: boolean;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -18,9 +19,11 @@ const InputField: React.FC<InputFieldProps> = ({
   name,
   onChange,
   placeholder,
-  error
+  error,
+  required = false
 }) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [touched, setTouched] = useState(false);
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prevState) => !prevState);
@@ -28,10 +31,15 @@ const InputField: React.FC<InputFieldProps> = ({
 
   const inputType = type === 'password' && isPasswordVisible ? 'text' : type;
 
+  const handleBlur = () => {
+    setTouched(true);
+  };
+
   return (
     <div>
       <label className="block text-sm font-medium text-gray-700 mb-2">
         {label}
+        {required && <span className="text-red-500 ml-1">*</span>}
       </label>
       <div className="relative">
         <input
@@ -39,6 +47,7 @@ const InputField: React.FC<InputFieldProps> = ({
           value={value}
           name={name}
           onChange={onChange}
+          onBlur={handleBlur} // Trigger validation when the user leaves the input field
           placeholder={placeholder}
           className="mb-2 w-full px-3 py-2 border rounded"
         />
@@ -52,7 +61,14 @@ const InputField: React.FC<InputFieldProps> = ({
           </button>
         )}
       </div>
-      {error && <p className="text-red-500 text-sm">{error}</p>}
+      {/* Show error only if the field is required, touched, and the value is empty */}
+      {required && touched && !value && (
+        <p className="text-red-500 text-sm">
+          {(name || 'Field').charAt(0).toUpperCase() + (name || 'Field').slice(1)} is required
+        </p>
+      )}
+      {/* Optionally show the passed error if provided */}
+      {error && !touched && <p className="text-red-500 text-sm">{error}</p>}
     </div>
   );
 };

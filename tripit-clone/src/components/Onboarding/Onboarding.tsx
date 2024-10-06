@@ -7,6 +7,7 @@ import Button from '../ui/Button';
 
 const Onboarding = () => {
   const dispatch: AppDispatch = useDispatch();
+  
   const { firstName, lastName, dob, homeCity, receiveEmails, errors } = useSelector(
     (state: RootState) => state.onboarding
   );
@@ -37,6 +38,7 @@ const Onboarding = () => {
             onChange={handleChange}
             placeholder="Enter First Name"
             error={errors.firstName}
+            required={true} 
           />
           <InputField
             label="Last Name"
@@ -46,6 +48,7 @@ const Onboarding = () => {
             onChange={handleChange}
             placeholder="Enter Last Name"
             error={errors.lastName}
+            required={true} 
           />
           <InputField
             label="Date of Birth"
@@ -55,6 +58,7 @@ const Onboarding = () => {
             onChange={handleChange}
             placeholder="mm/dd/yyyy"
             error={errors.dob}
+            required={true} 
           />
           <InputField
             label="Home City"
@@ -64,6 +68,7 @@ const Onboarding = () => {
             onChange={handleChange}
             placeholder="Enter Home City"
             error={errors.homeCity}
+            required={true} 
           />
           <div className="flex items-center my-4">
             <input

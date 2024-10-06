@@ -1,7 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 interface CityDropdownProps {
   inputValue: string;
+  name?:string;
   onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   isLoading: boolean;
   cityOptions: Array<{ label: string }>;
@@ -9,10 +10,12 @@ interface CityDropdownProps {
   hideDropdown: () => void; 
   showDropdown: boolean; 
   error?: string;
+  required?: boolean;
 }
 
 const CityDropdown: React.FC<CityDropdownProps> = ({
   inputValue,
+  name,
   onInputChange,
   isLoading,
   cityOptions,
@@ -20,10 +23,13 @@ const CityDropdown: React.FC<CityDropdownProps> = ({
   hideDropdown, 
   showDropdown, 
   error,
+  required = false
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const [touched, setTouched] = useState(false);
 
   const handleCitySelection = (city: string) => {
+    
     onCitySelect(city);
     hideDropdown(); // Hide dropdown after selection
     if (inputRef.current) {
@@ -31,10 +37,17 @@ const CityDropdown: React.FC<CityDropdownProps> = ({
     }
   };
 
+  const handleBlur = () => {
+    setTouched(true);
+  };
+
+
+ 
   return (
     <div>
       <label className="block text-sm font-medium text-gray-700 mb-2">
         Home City
+        {required && <span className="text-red-500 ml-1">*</span>}
       </label>
       <div className="relative">
         <input
@@ -42,6 +55,7 @@ const CityDropdown: React.FC<CityDropdownProps> = ({
           type="text"
           value={inputValue}
           onChange={onInputChange}
+          onBlur={handleBlur} // Trigger validation when the user leaves the input field
           placeholder="Enter your home city"
           className="mb-2 w-full px-3 py-2 border rounded"
         />
@@ -74,6 +88,13 @@ const CityDropdown: React.FC<CityDropdownProps> = ({
           </div>
         )}
       </div>
+       {/* Show error only if the field is required, touched, and the value is empty */}
+       {required && touched && !inputValue && (
+        <p className="text-red-500 text-sm">
+          {(name || 'Field').charAt(0).toUpperCase() + (name || 'Field').slice(1)} is required
+        </p>
+      )}
+
       {error && <p className="text-red-500 text-sm">{error}</p>}
     </div>
   );

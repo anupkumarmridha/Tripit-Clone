@@ -12,6 +12,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo-tripit.svg';
 import OAuthButtons from './OAuthButtons';
 import { useSignup, useLogin } from '../../hooks/useAuth';  
+import { setField } from '../../redux/onboardingSlice';
 
 const Auth: React.FC<{ isLogin: boolean }> = ({ isLogin }) => {
   const dispatch = useDispatch();
@@ -106,6 +107,10 @@ const Auth: React.FC<{ isLogin: boolean }> = ({ isLogin }) => {
             
               dispatch(resetForm());// Clear the form after successful signup
               setInputValue('');  // Clear local state
+
+              // Dispatch the homeCity to the onboarding slice
+              dispatch(setField({ field: 'homeCity', value: homeCity }));
+              
               navigate('/app/onboarding');
             },
             onError: (error) => {
@@ -131,25 +136,30 @@ const Auth: React.FC<{ isLogin: boolean }> = ({ isLogin }) => {
         <InputField
           label="Email Address"
           type="email"
+          name='email'
           value={email}
           onChange={(e) => dispatch(setEmail(e.target.value))}
           placeholder="Enter your email"
           error={emailError}
+          required={true}
         />
 
         <InputField
           label="Password"
           type="password"
+          name='password'
           value={password}
           onChange={(e) => dispatch(setPassword(e.target.value))}
           placeholder="Enter your password"
           error={passwordError}
+          required={true}
         />
 
         {!isLogin && (
           <>
             <CityDropdown
               inputValue={inputValue}
+              name='home city'
               onInputChange={handleInputChange}
               isLoading={isLoading}
               cityOptions={cityOptions || []}
@@ -157,6 +167,8 @@ const Auth: React.FC<{ isLogin: boolean }> = ({ isLogin }) => {
               hideDropdown={hideDropdown}
               showDropdown={showDropdown}
               error={cityError}
+              required={true}
+
             />
 
             <div className="flex items-center mt-4">
