@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe, faUser, faComments, faBars } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from '../ui/Dropdown';
 import logo from '../../assets/logo-tripit.svg';
+import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,7 +18,9 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
+            <Link to="/app/main">
             <img src={logo} alt="Logo" className="h-8 w-auto" />
+            </Link>
           </div>
 
           {/* Navbar Links for Desktop */}
@@ -53,7 +56,7 @@ const Navbar: React.FC = () => {
               }
               options={[
                 { label: 'Account and Security', href: '/account-security' },
-                { label: 'Profile', href: '/profile' },
+                { label: 'Profile', href: '/app/profile' },
                 { label: 'Settings', href: '/settings' },
                 { label: 'Sign Out', href: '/signout' },
               ]}
@@ -121,7 +124,7 @@ const Navbar: React.FC = () => {
               }
               options={[
                 { label: 'Account and Security', href: '/account-security' },
-                { label: 'Profile', href: '/profile' },
+                { label: 'Profile', href: '/app/profile' },
                 { label: 'Settings', href: '/settings' },
                 { label: 'Sign Out', href: '/signout' },
               ]}

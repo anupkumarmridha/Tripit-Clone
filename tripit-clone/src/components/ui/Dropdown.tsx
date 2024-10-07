@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 interface DropdownProps {
   defaultOption: string | JSX.Element;
@@ -26,13 +27,13 @@ const Dropdown: React.FC<DropdownProps> = ({ defaultOption, options }) => {
       {isDropdownOpen && (
         <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg z-20">
           {options.map(option => (
-            <a
+            <Link
               key={option.href}
-              href={option.href}
+              to={option.href}
               className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
             >
               {option.label}
-            </a>
+            </Link>
           ))}
         </div>
       )}

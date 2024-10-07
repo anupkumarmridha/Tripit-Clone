@@ -6,6 +6,7 @@ import LoginPage from '../pages/LoginPage/LoginPage';
 import ProtectedRoute from '../Hoc/ProtectedRoute';
 import Onboarding from '../components/Onboarding/Onboarding';
 import MainPage from '../pages/MainPage/MainPage';
+import ProfilePage from '../pages/ProfilePage/ProfilePage';
 
 const routes: RouteObject[] = [
     {
@@ -34,6 +35,10 @@ const routes: RouteObject[] = [
     {
         path: "/app/main",
         element: <ProtectedRoute><MainPage /></ProtectedRoute>
+    },
+    {
+        path: "/app/profile",
+        element: <ProtectedRoute><ProfilePage /></ProtectedRoute>
     },
     {
         path: "*",
