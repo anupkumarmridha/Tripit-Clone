@@ -18,7 +18,7 @@ const users = [];
 // Secret key for JWT
 const JWT_SECRET = "your_jwt_secret";
 
-
+// Signup Route
 app.post('/signup', async (req, res) => {
   const { email, password, homeCity } = req.body;
 
@@ -32,7 +32,7 @@ app.post('/signup', async (req, res) => {
   const hashedPassword = await bcrypt.hash(password, 10);
 
   // Add user to the mock database
-  const user = { email, password: hashedPassword, homeCity };
+  const user = { email, password: hashedPassword, homeCity, onboardingDetails: {} };
   users.push(user);
 
   // Create JWT token
@@ -63,7 +63,35 @@ app.post('/login', async (req, res) => {
   res.status(200).json({ message: "Login successful", token });
 });
 
-// Protected Route
+// Onboarding Route
+app.post('/onboarding', (req, res) => {
+  const token = req.headers['authorization'];
+  if (!token) {
+    return res.status(401).json({ error: "No token provided" });
+  }
+
+  // Verify token
+  jwt.verify(token, JWT_SECRET, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ error: "Invalid token" });
+    }
+
+    const { email } = decoded;
+    const user = users.find(user => user.email === email);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Update user's onboarding details
+    const { firstName, lastName, dob, homeCity, receiveEmails } = req.body;
+    user.onboardingDetails = { firstName, lastName, dob, homeCity, receiveEmails };
+
+    res.status(200).json({ message: "Onboarding completed", onboardingDetails: user.onboardingDetails });
+  });
+});
+
+// Protected Profile Route
 app.get('/profile', (req, res) => {
   const token = req.headers['authorization'];
   if (!token) {
@@ -76,7 +104,16 @@ app.get('/profile', (req, res) => {
       return res.status(401).json({ error: "Invalid token" });
     }
 
-    res.status(200).json({ message: `Hello, ${decoded.email}` });
+    const { email } = decoded;
+    const user = users.find(user => user.email === email);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Return user details
+    const { homeCity, onboardingDetails } = user;
+    res.status(200).json({ email, homeCity, onboardingDetails });
   });
 });
 

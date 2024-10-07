@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGlobe, faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { faSortDown } from '@fortawesome/free-solid-svg-icons';
 
 interface DropdownProps {
-  defaultOption: string;
+  defaultOption: string | JSX.Element;
   options: { label: string, href: string }[];
 }
 
@@ -20,16 +20,11 @@ const Dropdown: React.FC<DropdownProps> = ({ defaultOption, options }) => {
         className="flex items-center text-primary border-2 border-primary rounded-sm text-xs font-bold px-3.5 py-1.5 w-auto text-center hover:bg-primary hover:text-white transition duration-500 ease-in-out"
         onClick={toggleDropdown}
       >
-        <span className="mr-2">
-          <FontAwesomeIcon icon={faGlobe} />
-        </span>
         {defaultOption}
-        <span className="ml-2 mb-2">
-          <FontAwesomeIcon icon={faSortDown} className="text-xs" />
-        </span>
+        <FontAwesomeIcon icon={faSortDown} className="ml-2 text-xs" />
       </button>
       {isDropdownOpen && (
-        <div className="absolute md:right-0 md:mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg z-20 top-[82%] right:197px">
+        <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg z-20">
           {options.map(option => (
             <a
               key={option.href}

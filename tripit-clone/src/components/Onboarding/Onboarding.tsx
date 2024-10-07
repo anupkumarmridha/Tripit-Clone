@@ -4,10 +4,12 @@ import { RootState, AppDispatch } from '../../redux/store';
 import { setField, setReceiveEmails, validateFields, resetForm } from '../../redux/onboardingSlice';
 import InputField from '../ui/InputField';
 import Button from '../ui/Button';
+import { useOnboarding } from '../../hooks/useUser';
+import { useNavigate } from 'react-router-dom';
 
 const Onboarding = () => {
   const dispatch: AppDispatch = useDispatch();
-  
+  const navigate = useNavigate();
   const { firstName, lastName, dob, homeCity, receiveEmails, errors } = useSelector(
     (state: RootState) => state.onboarding
   );
@@ -15,12 +17,39 @@ const Onboarding = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setField({ field: e.target.name, value: e.target.value }));
   };
+ // Use the onboarding hook
+ const { mutate: submitOnboarding, status, isError, error } = useOnboarding();
 
   const handleSubmit = () => {
+    // Dispatch validation action
     dispatch(validateFields());
+
     // Check for validation errors before submission
     if (!errors.firstName && !errors.lastName && !errors.dob && !errors.homeCity) {
       console.log('Form is valid. Submitting form...');
+
+      submitOnboarding({
+        firstName: firstName,
+        lastName: lastName,
+        dob: dob,
+        homeCity: homeCity,
+        receiveEmails: receiveEmails,
+      },
+      {
+        onSuccess: (data) => {
+          console.log('Onboarding successful:', data);
+          
+          // Reset the form after successful onboarding
+          dispatch(resetForm());
+
+          // Navigate to Main Page
+          navigate('/app/main');
+        },
+        onError: (error) => {
+          console.error('Onboarding failed:', error);
+        },
+      });
+      // Reset form after successful submission
       dispatch(resetForm());
     }
   };
@@ -87,7 +116,10 @@ const Onboarding = () => {
             onClick={handleSubmit}
             variant="primary"
             className="mt-4"
+            disabled={status === 'pending'}
           />
+
+      {isError && <p>Error: {error?.message}</p>}
         </form>
       </div>
     </div>

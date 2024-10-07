@@ -3,6 +3,9 @@ import logo from '../../assets/logo-tripit.svg';
 import { Link } from 'react-router-dom';
 import Dropdown from '../ui/Dropdown';
 import SocialIcons from '../ui/SocialIcons';
+import { faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -57,7 +60,14 @@ const Header: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Dropdown defaultOption={'EN'} options={languageOptions} />
+              <Dropdown
+                defaultOption={
+                  <span className="flex items-center">
+                    <FontAwesomeIcon icon={faGlobe} className="mr-2" />
+                    EN
+                  </span>
+                }
+                options={languageOptions} />
             </li>
             <li className="border-t border-gray-300 pt-4 md:hidden">
               <SocialIcons />
