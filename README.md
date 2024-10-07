@@ -1,6 +1,6 @@
 # Project Directory Structure
 
-Deployed URL: [https://tripit-clone-kohl.vercel.app/](https://tripit-clone-kohl.vercel.app/)
+Deployed URL: [https://tripit-clone-kohl.vercel.app/web](https://tripit-clone-kohl.vercel.app/web)
 
 ```
 └── Tripit-clone
@@ -76,7 +76,19 @@ Deployed URL: [https://tripit-clone-kohl.vercel.app/](https://tripit-clone-kohl.
         │   │   │   └── VideoSection.tsx
         │   │   ├── Layout
         │   │   │   └── Layout.tsx
+        │   │   ├── Main
+        │   │   │   ├── Navbar.tsx
+        │   │   │   ├── NoTrips.tsx
+        │   │   │   ├── Pagination.tsx
+        │   │   │   ├── Profile
+        │   │   │   │   └── ProfileCard.tsx
+        │   │   │   ├── TabNavigation.tsx
+        │   │   │   ├── TravelerFilter.tsx
+        │   │   │   ├── TripCard.tsx
+        │   │   │   ├── TripsList.tsx
+        │   │   │   └── TripsTab.tsx
         │   │   ├── Onboarding
+        │   │   │   ├── Nav.tsx
         │   │   │   └── Onboarding.tsx
         │   │   └── ui
         │   │       ├── Button.tsx
@@ -94,7 +106,8 @@ Deployed URL: [https://tripit-clone-kohl.vercel.app/](https://tripit-clone-kohl.
         │   ├── hooks
         │   │   ├── useAuth.ts
         │   │   ├── useCityAutocomplete.ts
-        │   │   └── useOAuth.ts
+        │   │   ├── useOAuth.ts
+        │   │   └── useUser.ts
         │   ├── index.css
         │   ├── main.tsx
         │   ├── pages
@@ -104,6 +117,10 @@ Deployed URL: [https://tripit-clone-kohl.vercel.app/](https://tripit-clone-kohl.
         │   │   │   └── HomePage.tsx
         │   │   ├── LoginPage
         │   │   │   └── LoginPage.tsx
+        │   │   ├── MainPage
+        │   │   │   └── MainPage.tsx
+        │   │   ├── ProfilePage
+        │   │   │   └── ProfilePage.tsx
         │   │   └── SignUpPage
         │   │       └── SignUpPage.tsx
         │   ├── redux
@@ -115,7 +132,8 @@ Deployed URL: [https://tripit-clone-kohl.vercel.app/](https://tripit-clone-kohl.
         │   │   └── index.tsx
         │   ├── services
         │   │   ├── authService.ts
-        │   │   └── cityService.ts
+        │   │   ├── cityService.ts
+        │   │   └── userService.ts
         │   ├── styles
         │   │   └── Header.css
         │   ├── types
