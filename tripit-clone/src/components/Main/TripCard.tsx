@@ -18,13 +18,13 @@ const TripCard: React.FC<Trip> = ({ title, location, date, duration, imageUrl })
         <p className="text-gray-500">{date} ({duration})</p>
         <div className="flex items-center space-x-4 mt-2 text-blue-600">
           <button className="text-sm flex items-center">
-            <i className="material-icons mr-1">link</i>Manage Sharing
+            <i className="material-icons mr-1">link</i>
           </button>
           <button className="text-sm flex items-center">
-            <i className="material-icons mr-1">edit</i>Edit Trip Info
+            <i className="material-icons mr-1">edit</i>
           </button>
           <button className="text-sm flex items-center">
-            <i className="material-icons mr-1">more_horiz</i>More Options
+            <i className="material-icons mr-1">more</i>
           </button>
         </div>
       </div>

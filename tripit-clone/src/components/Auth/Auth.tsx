@@ -89,7 +89,7 @@ const Auth: React.FC<{ isLogin: boolean }> = ({ isLogin }) => {
             onSuccess: (data) => {
               console.log('Login successful. Token received:', data);
               dispatch(resetForm());// Clear the form after successful login
-       
+              navigate('/app/main');
               
             },
             onError: (error) => {

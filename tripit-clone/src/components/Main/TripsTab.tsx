@@ -16,7 +16,7 @@ const TripsTab: React.FC = () => {
       location: 'Kolkata, India',
       date: 'Oct 6 - 16, 2024',
       duration: '11 days',
-      imageUrl: 'https://yourimageurl.com/image.jpg',
+      imageUrl: 'https://lh5.googleusercontent.com/p/AF1QipMHvkB151icA3Pa0YFWpakcpCv_LplFa1gorz6j=w1080-h624-n-k-no',
     },
   ];
 
