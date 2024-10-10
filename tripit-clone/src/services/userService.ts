@@ -10,11 +10,11 @@ export const onboarding = async (
   receiveEmails: boolean
 ) => {
   const response = await axios.post(
-    `${API_URL}/onboarding`,
+    `${API_URL}/api/onboarding`,
     { firstName, lastName, dob, homeCity, receiveEmails },
     {
       headers: {
-        Authorization: token,
+        Authorization: `Bearer ${token}`,
       },
     }
   );
