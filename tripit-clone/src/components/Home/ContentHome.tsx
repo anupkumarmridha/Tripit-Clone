@@ -19,7 +19,7 @@ const ContentHome: React.FC<ContentProps> = ({ content, index }) => {
     <div
       className={`flex flex-col md:flex-row ${
         index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-      } justify-center mx-auto pb-20 px-4 py-12 md:px-0`}
+      } justify-center mx-auto pb-20 px-4 py-12 md:py-1 lg:py-0 md:px-0`}
     >
       <div className="w-full md:w-1/2 lg:w-1/3 flex justify-center md:justify-start mb-6 md:mb-0">
         <img className="w-full max-w-xs md:max-w-4xl" src={content.img} alt="" />

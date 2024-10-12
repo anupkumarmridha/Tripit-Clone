@@ -6,7 +6,6 @@ import SocialIcons from '../ui/SocialIcons';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => {
@@ -22,14 +21,14 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header className="bg-white fixed w-full z-50">
-      <div className="container mx-auto px-4 flex justify-between items-center py-4">
-        <a href="/" className="flex items-center">
+    <header className="bg-white fixed w-full z-50 shadow-md">
+      <div className="container mx-auto px-4 flex items-center justify-between py-3 lg:py-4">
+        <a href="/" className="flex items-center flex-shrink-0">
           <img src={logo} alt="TripIt" className="h-8" />
         </a>
 
         <button
-          className="md:hidden text-gray-700 focus:outline-none"
+          className="lg:hidden text-gray-700 focus:outline-none"
           onClick={toggleMobileMenu}
         >
           <span className="sr-only">Toggle navigation</span>
@@ -42,19 +41,19 @@ const Header: React.FC = () => {
 
         <nav
           className={`${isMobileMenuOpen ? 'block' : 'hidden'
-            } md:flex items-center justify-center md:space-x-8 w-full md:w-auto absolute md:relative top-16 md:top-auto right-0 md:right-auto bg-white md:bg-transparent shadow-lg md:shadow-none z-10 md:z-auto`}
+            } lg:flex items-center justify-center lg:space-x-4 w-full lg:w-auto absolute lg:relative top-16 lg:top-auto right-0 lg:right-auto bg-white lg:bg-transparent shadow-lg lg:shadow-none z-10 lg:z-auto transition-all duration-300 ease-in-out`}
         >
-          <ul className="md:flex md:space-x-8 space-y-4 md:space-y-0 py-6 md:py-0 px-4 md:px-0 items-center justify-center">
-            <li><Link to="/tripit" className="block text-gray-950 hover:text-primary">TripIt</Link></li>
-            <li><a href="/tripit-pro" className="block text-gray-950 hover:text-primary">TripIt Pro</a></li>
-            <li><a href="/how-it-works" className="block text-gray-950 hover:text-primary">How It Works</a></li>
-            <li><a href="/pricing" className="block text-gray-950 hover:text-primary">Pricing</a></li>
-            <li><a href="/sap-concur" className="block text-gray-950 hover:text-primary">SAP Concur</a></li>
-            <li><Link to="/account/login" className="block text-gray-950 hover:text-primary">Sign In</Link></li>
+          <ul className="flex flex-col lg:flex-row lg:space-x-4 space-y-4 lg:space-y-0 py-6 lg:py-0 px-4 lg:px-0 items-center justify-center">
+            <li><Link to="/tripit" className="block text-gray-950 hover:text-primary transition duration-300 text-base lg:text-lg">TripIt</Link></li>
+            <li><a href="/tripit-pro" className="block text-gray-950 hover:text-primary transition duration-300 text-base lg:text-lg">TripIt Pro</a></li>
+            <li><a href="/how-it-works" className="block text-gray-950 hover:text-primary transition duration-300 text-base lg:text-lg">How It Works</a></li>
+            <li><a href="/pricing" className="block text-gray-950 hover:text-primary transition duration-300 text-base lg:text-lg">Pricing</a></li>
+            <li><a href="/sap-concur" className="block text-gray-950 hover:text-primary transition duration-300 text-base lg:text-lg">SAP Concur</a></li>
+            <li><Link to="/account/login" className="block text-gray-950 hover:text-primary transition duration-300 text-base lg:text-lg">Sign In</Link></li>
             <li>
               <Link
                 to="/account/create"
-                className="text-primary border-2 border-primary rounded-sm text-base font-semibold px-3.5 py-2 w-auto text-center hover:bg-primary hover:text-white transition duration-500 ease-in-out"
+                className="text-primary border-2 border-primary rounded-sm text-sm lg:text-base font-semibold px-3 py-1 lg:px-4 lg:py-2 w-auto text-center hover:bg-primary hover:text-white transition duration-500 ease-in-out whitespace-nowrap"
               >
                 Sign Up—It's Free!
               </Link>
@@ -67,9 +66,10 @@ const Header: React.FC = () => {
                     EN
                   </span>
                 }
-                options={languageOptions} />
+                options={languageOptions}
+              />
             </li>
-            <li className="border-t border-gray-300 pt-4 md:hidden">
+            <li className="border-t border-gray-300 pt-4 lg:hidden">
               <SocialIcons />
             </li>
           </ul>
