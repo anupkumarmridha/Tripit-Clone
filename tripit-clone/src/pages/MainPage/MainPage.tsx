@@ -3,9 +3,11 @@ import TripsTab from "../../components/Main/TripsTab"
 
 const MainPage = () => {
   return (
-    <div>
+    <div className="relative">
         <Navbar/>
+        <div className="pt-16"> 
         <TripsTab />
+      </div>
     </div>
   )
 }

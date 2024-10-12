@@ -25,10 +25,13 @@ const TripsTab: React.FC = () => {
       {/* Tab Navigation */}
       <TabNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
       {/* Traveler Filter */}
-      <TravelerFilter
-        activeTravelerType={activeTravelerType}
-        setActiveTravelerType={setActiveTravelerType}
-      />
+      <div className="flex justify-between items-center py-4">
+      <button className="flex items-center text-primary hover:text-secondary font-semibold">
+        <span className="mr-2 text-lg">+</span> Add a Trip
+      </button>
+      <TravelerFilter activeTravelerType={activeTravelerType} setActiveTravelerType={setActiveTravelerType} />
+    </div>
+     
       {/* Trips List */}
       <TripsList trips={trips} />
       {/* Pagination */}

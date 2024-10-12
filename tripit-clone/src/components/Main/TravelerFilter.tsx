@@ -9,16 +9,16 @@ const TravelerFilter: React.FC<TravelerFilterProps> = ({ activeTravelerType, set
   const travelerTypes = ["Traveler", "Non-Traveler", "All"];
 
   return (
-    <div className="flex space-x-4 mb-4">
-      {travelerTypes.map((type) => (
+    <div className="flex border border-primary rounded-md overflow-hidden">
+      {travelerTypes.map((type, index) => (
         <button
           key={type}
           onClick={() => setActiveTravelerType(type)}
-          className={`px-4 py-2 rounded ${
+          className={`px-6 py-2 font-semibold transition-colors duration-300 ease-in-out focus:outline-none border-l border-r border-primary ${
             activeTravelerType === type
-              ? "bg-blue-600 text-white"
-              : "bg-gray-200 text-gray-700"
-          }`}
+              ? "bg-primary text-white"
+              : "text-secondary bg-white hover:bg-gray-100"
+          } ${index === 0 ? "rounded-l-md border-l-0" : index === travelerTypes.length - 1 ? "rounded-r-md border-r-0" : ""}`}
         >
           {type}
         </button>

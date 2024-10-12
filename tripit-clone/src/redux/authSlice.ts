@@ -17,7 +17,7 @@ const initialState: AuthState = {
   emailError: '',
   passwordError: '',
   cityError: '',
-  token: null,
+  token: localStorage.getItem('token') || null,
 };
 
 const authSlice = createSlice({
@@ -44,9 +44,15 @@ const authSlice = createSlice({
     },
     setToken: (state, action: PayloadAction<string | null>) => {
       state.token = action.payload;
+      if (action.payload) {
+        localStorage.setItem('token', action.payload);
+      } else {
+        localStorage.removeItem('token');
+      }
     },
     logout: (state) => {
       state.token = null;
+      localStorage.removeItem('token');
     },
     resetForm: (state) => {
       state.email = '';
