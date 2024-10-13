@@ -11,7 +11,7 @@ import { FaXTwitter } from "react-icons/fa6";
 const Footer: React.FC = () => {
   return (
     
-    <div className="md:flex-row px-2 py-4 items-center justify-around box-border">
+    <div className="md:flex-row px-2 py-4 items-center justify-around box-border mt-56">
     
       <div className="md:flex justify-center">
         <img className="md:mb-40 md:pr-80 m-auto p-2 md:m-0 md:p-0" src={logo} alt="" />

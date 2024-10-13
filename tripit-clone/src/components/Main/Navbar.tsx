@@ -25,9 +25,14 @@ const Navbar: React.FC = () => {
 
           {/* Navbar Links for Desktop */}
           <div className="hidden md:flex space-x-4">
-            <a href="/trips" className="text-gray-800 font-bold hover:underline">
+
+            <a href="/trips" className="text-gray-800 font-bold relative group">
               Trips
+              <div
+              className="absolute w-full h-1 bottom-0 left-0 hidden group-hover:block bg-primary transition-all duration-300"
+              ></div>
             </a>
+          
             <Dropdown
               defaultOption="Support"
               options={[
@@ -75,8 +80,8 @@ const Navbar: React.FC = () => {
               ]}
             />
             <div className="flex items-center">
-              <span className="text-gray-800 font-bold mr-2">New website</span>
-              <input type="checkbox" className="toggle-checkbox" />
+              <span className="text-secondary font-bold mr-2">New website</span>
+              <input type="checkbox" className="enabled:hover:border-gray-400 disabled:opacity-75" />
             </div>
           </div>
 
@@ -143,8 +148,8 @@ const Navbar: React.FC = () => {
               ]}
             />
             <div className="flex items-center px-3 py-2">
-              <span className="text-gray-800 font-bold mr-2">New website</span>
-              <input type="checkbox" className="toggle-checkbox" />
+              <span className="text-secondary font-bold mr-2">New website</span>
+              <input type="checkbox" className="enabled:hover:border-gray-400 disabled:opacity-75" />
             </div>
           </div>
         </div>

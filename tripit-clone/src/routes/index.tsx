@@ -7,6 +7,7 @@ import ProtectedRoute from '../Hoc/ProtectedRoute';
 import Onboarding from '../components/Onboarding/Onboarding';
 import MainPage from '../pages/MainPage/MainPage';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
+import AddTripForm from '../components/Main/Trip/AddTripForm';
 
 const routes: RouteObject[] = [
     {
@@ -39,6 +40,10 @@ const routes: RouteObject[] = [
     {
         path: "/app/profile",
         element: <ProtectedRoute><ProfilePage /></ProtectedRoute>
+    },
+    {
+        path: "/app/trip/create",
+        element: <ProtectedRoute><AddTripForm /></ProtectedRoute>
     },
     {
         path: "*",

@@ -1,15 +1,14 @@
-import Navbar from "../../components/Main/Navbar"
-import TripsTab from "../../components/Main/TripsTab"
+import MainLayout from "../../components/Layout/MainLayout"
+import TripsTab from "../../components/Main/Trip/TripsTab"
 
 const MainPage = () => {
   return (
+    <MainLayout>
     <div className="relative">
-        <Navbar/>
-        <div className="pt-16"> 
-        <TripsTab />
+    <TripsTab />
       </div>
-    </div>
+    </MainLayout>
   )
 }
 
-export default MainPage
+export default MainPage;
