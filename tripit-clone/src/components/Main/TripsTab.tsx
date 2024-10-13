@@ -3,6 +3,7 @@ import TabNavigation from './TabNavigation';
 import TravelerFilter from './TravelerFilter';
 import TripsList from './TripsList';
 import Pagination from './Pagination';
+import { IoIosAddCircleOutline } from "react-icons/io";
 
 const TripsTab: React.FC = () => {
   const [activeTab, setActiveTab] = useState('Upcoming Trips');
@@ -27,7 +28,7 @@ const TripsTab: React.FC = () => {
       {/* Traveler Filter */}
       <div className="flex justify-between items-center py-4">
       <button className="flex items-center text-primary hover:text-secondary font-semibold">
-        <span className="mr-2 text-lg">+</span> Add a Trip
+        <span className="mr-2 text-2xl"><IoIosAddCircleOutline /></span> Add a Trip
       </button>
       <TravelerFilter activeTravelerType={activeTravelerType} setActiveTravelerType={setActiveTravelerType} />
     </div>
