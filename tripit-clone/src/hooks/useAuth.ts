@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
-import { setToken } from '../redux/authSlice';
+import { setToken } from '../redux/slices/authSlice';
 import { signup, login } from '../services/authService';
 import { AxiosError } from 'axios'; 
 

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { logout } from '../../redux/authSlice'; 
+import { logout } from '../../redux/slices/authSlice'; 
 
 interface DropdownProps {
   defaultOption: string | JSX.Element;

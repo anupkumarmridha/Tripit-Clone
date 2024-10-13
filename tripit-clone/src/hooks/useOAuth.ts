@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { loginWithOAuthService } from '../services/authService';
 import { useDispatch } from 'react-redux';
-import { setToken } from '../redux/oauthSlice';
+import { setToken } from '../redux/slices/oauthSlice';
 
 export const useOAuth = (provider: string) => {
   const dispatch = useDispatch();

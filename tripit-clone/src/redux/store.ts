@@ -1,13 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
-import authReducer from './authSlice';
-import oauthReducer from './oauthSlice'; 
-import onboardingReducer from './onboardingSlice';
+import authReducer from './slices/authSlice';
+import oauthReducer from './slices/oauthSlice'; 
+import onboardingReducer from './slices/onboardingSlice';
+import tripReducer from './slices/tripSlice';
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
     oauth: oauthReducer,  
-    onboarding: onboardingReducer, 
+    onboarding: onboardingReducer,
+    trip: tripReducer,
   },
 });
 

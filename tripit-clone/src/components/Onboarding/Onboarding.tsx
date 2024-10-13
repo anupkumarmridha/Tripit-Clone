@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../redux/store';
-import { setField, setReceiveEmails, validateFields, resetForm } from '../../redux/onboardingSlice';
+import { setField, setReceiveEmails, validateFields, resetForm } from '../../redux/slices/onboardingSlice';
 import InputField from '../ui/InputField';
 import Button from '../ui/Button';
 import { useOnboarding } from '../../hooks/useUser';

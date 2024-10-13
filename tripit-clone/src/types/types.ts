@@ -46,3 +46,12 @@ export interface InputFieldProps {
   export interface AuthProps {
     isLogin: boolean;
   }
+
+
+  export interface TripState {
+    tripName: string;
+    destination: string;
+    startDate: string;
+    endDate: string;
+    imagePreview: string;
+  }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setEmail, setPassword, setHomeCity, setEmailError, setPasswordError, setCityError, resetForm } from '../../redux/authSlice';
+import { setEmail, setPassword, setHomeCity, setEmailError, setPasswordError, setCityError, resetForm } from '../../redux/slices/authSlice';
 import { RootState } from '../../redux/store';
 import Button from '../ui/Button';
 import InputField from '../ui/InputField';
@@ -12,7 +12,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo-tripit.svg';
 import OAuthButtons from './OAuthButtons';
 import { useSignup, useLogin } from '../../hooks/useAuth';  
-import { setField } from '../../redux/onboardingSlice';
+import { setField } from '../../redux/slices/onboardingSlice';
 
 const Auth: React.FC<{ isLogin: boolean }> = ({ isLogin }) => {
   const dispatch = useDispatch();
