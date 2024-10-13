@@ -1,8 +1,11 @@
 import axios from 'axios';
 import { TripState } from '../types/types';
 
+import { API_URL } from '../config/config';
+
 export const saveTrip = async (token: string, tripDetails: TripState) => {
-    const response = await axios.post('/api/trip', tripDetails, {
+    console.log('tripDetails', tripDetails);
+    const response = await axios.post(`${API_URL}/api/trips`, tripDetails, {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -11,7 +14,7 @@ export const saveTrip = async (token: string, tripDetails: TripState) => {
 };
 
 export const fetchTrip = async (token: string, tripId: string) => {
-    const response = await axios.get(`/api/trip/${tripId}`, {
+    const response = await axios.get(`${API_URL}/api/trips/${tripId}`, {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -20,7 +23,7 @@ export const fetchTrip = async (token: string, tripId: string) => {
 };
 
 export const fetchAllTrips = async (token: string) => {
-    const response = await axios.get('/api/trips', {
+    const response = await axios.get(`${API_URL}/api/trips`, {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -29,7 +32,7 @@ export const fetchAllTrips = async (token: string) => {
 };
 
 export const updateTrip = async (token: string, tripId: string, tripDetails: TripState) => {
-    const response = await axios.put(`/api/trip/${tripId}`, tripDetails, {
+    const response = await axios.put(`${API_URL}/api/trips/${tripId}`, tripDetails, {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -38,7 +41,7 @@ export const updateTrip = async (token: string, tripId: string, tripDetails: Tri
 };
 
 export const deleteTrip = async (token: string, tripId: string) => {
-    const response = await axios.delete(`/api/trip/${tripId}`, {
+    const response = await axios.delete(`${API_URL}/api/trips/${tripId}`, {
         headers: {
             Authorization: `Bearer ${token}`
         }

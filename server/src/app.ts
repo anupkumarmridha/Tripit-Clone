@@ -4,6 +4,7 @@ import Database from './config/database';
 import AuthRoutes from './routes/authRoutes';
 import OnboardingRoutes from './routes/onboardingRoutes';
 import ErrorHandler from './middlewares/errorHandler';
+import TripRoutes from './routes/tripRoutes';
 
 class App {
   public express: express.Application;
@@ -27,6 +28,7 @@ class App {
       });
     this.express.use('/api/auth', AuthRoutes);
     this.express.use('/api/onboarding', OnboardingRoutes);
+    this.express.use('/api/trips', TripRoutes);
   }
 
   private errorHandling() {
