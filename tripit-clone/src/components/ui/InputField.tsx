@@ -63,9 +63,7 @@ const InputField: React.FC<InputFieldProps> = ({
       </div>
       {/* Show error only if the field is required, touched, and the value is empty */}
       {required && touched && !value && (
-        <p className="text-red-500 text-sm">
-          {(name || 'This Field').charAt(0).toUpperCase() + (name || 'This Field').slice(1)} is required
-        </p>
+        <p className="text-red-500 text-sm">This field is required</p>
       )}
       {/* Optionally show the passed error if provided */}
       {error && !touched && <p className="text-red-500 text-sm">{error}</p>}
