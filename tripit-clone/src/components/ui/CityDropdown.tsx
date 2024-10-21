@@ -2,6 +2,8 @@ import React, { useRef, useState } from 'react';
 
 interface CityDropdownProps {
   inputValue: string;
+  labelName: string;
+  placeholder: string;
   name?:string;
   onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   isLoading: boolean;
@@ -16,6 +18,8 @@ interface CityDropdownProps {
 const CityDropdown: React.FC<CityDropdownProps> = ({
   inputValue,
   name,
+  labelName,
+  placeholder,
   onInputChange,
   isLoading,
   cityOptions,
@@ -46,7 +50,7 @@ const CityDropdown: React.FC<CityDropdownProps> = ({
   return (
     <div>
       <label className="block text-sm font-medium text-gray-700 mb-2">
-        Home City
+     {labelName}
         {required && <span className="text-red-500 ml-1">*</span>}
       </label>
       <div className="relative">
@@ -56,7 +60,7 @@ const CityDropdown: React.FC<CityDropdownProps> = ({
           value={inputValue}
           onChange={onInputChange}
           onBlur={handleBlur} // Trigger validation when the user leaves the input field
-          placeholder="Enter your home city"
+          placeholder={placeholder}
           className="mb-2 w-full px-3 py-2 border rounded"
         />
 

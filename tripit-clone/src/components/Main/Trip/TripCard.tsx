@@ -1,19 +1,14 @@
 import React from 'react';
 import { FaLink, FaEdit, FaEllipsisH } from 'react-icons/fa';
+import { Trip } from '../../../types/types';
 
-interface Trip {
-  id: number;
-  title: string;
-  location: string;
-  date: string;
-  duration: string;
-  imageUrl: string;
-}
+const TripCard: React.FC<Trip> = ({ id, title, location, date, duration, imageUrl }) => {
+  const defaultImageUrl = 'https://via.placeholder.com/300x200?text=No+Image+Available';
 
-const TripCard: React.FC<Trip> = ({ title, location, date, duration, imageUrl }) => {
   return (
     <div className="flex justify-between items-start p-6 bg-white shadow-md rounded-lg mb-6 border border-gray-200">
       <div className="flex-1 mr-6">
+        <input type='hidden' value={id} />
         <h3 className="text-xl font-semibold text-primary mb-1">{title}</h3>
         <p className="text-md text-gray-700 mb-1">{location}</p>
         <p className="text-sm text-gray-500 mb-4">{date} ({duration})</p>
@@ -25,8 +20,6 @@ const TripCard: React.FC<Trip> = ({ title, location, date, duration, imageUrl })
         </button>
 
         <div className="py-2 flex items-center space-x-4 text-primary">
-
-
           <button className="flex items-center text-sm font-medium">
             <FaEdit className="mr-1" /> Edit Trip Info
           </button>
@@ -48,7 +41,16 @@ const TripCard: React.FC<Trip> = ({ title, location, date, duration, imageUrl })
           </div>
         </div>
       </div>
-      <img src={imageUrl} alt={title} className="w-40 h-28 rounded-lg object-cover" />
+      <img 
+        src={imageUrl || defaultImageUrl} 
+        alt={title} 
+        className="w-40 h-28 rounded-lg object-cover" 
+        loading="lazy" 
+        onError={(e) => {
+          e.currentTarget.onerror = null; // Prevents infinite callback loop
+          e.currentTarget.src = defaultImageUrl; // Set the fallback image on error
+        }}
+      />
     </div>
   );
 };

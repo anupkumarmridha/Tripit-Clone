@@ -4,12 +4,13 @@ import { TripState } from '../types/types';
 import { API_URL } from '../config/config';
 
 export const saveTrip = async (token: string, tripDetails: TripState) => {
-    console.log('tripDetails', tripDetails);
+    // console.log('tripDetails', tripDetails);
     const response = await axios.post(`${API_URL}/api/trips`, tripDetails, {
         headers: {
             Authorization: `Bearer ${token}`
         }
     });
+    // console.log(response);
     return response.data;
 };
 

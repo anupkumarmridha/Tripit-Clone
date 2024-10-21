@@ -159,7 +159,9 @@ const Auth: React.FC<{ isLogin: boolean }> = ({ isLogin }) => {
           <>
             <CityDropdown
               inputValue={inputValue}
+              labelName='Home City'
               name='home city'
+              placeholder='Enter your home city'
               onInputChange={handleInputChange}
               isLoading={isLoading}
               cityOptions={cityOptions || []}

@@ -49,9 +49,19 @@ export interface InputFieldProps {
 
 
   export interface TripState {
+    _id: string;
     tripName: string;
     destination: string;
     startDate: string;
     endDate: string;
     imagePreview: string;
+  }
+
+  export interface Trip {
+    id: string;
+    title: string;
+    location: string;
+    date: string;
+    duration: string;
+    imageUrl: string;
   }

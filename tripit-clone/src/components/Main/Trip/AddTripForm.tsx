@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MainLayout from '../../Layout/MainLayout';
 import InputField from '../../ui/InputField'
 import { FaCamera } from 'react-icons/fa';
@@ -6,33 +6,62 @@ import { RootState } from '../../../redux/store';
 import { setTripDetails } from '../../../redux/slices/tripSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSaveTrip } from '../../../hooks/useTrip';
+import { useCityAutocomplete } from '../../../hooks/useCityAutocomplete';
+import CityDropdown from '../../ui/CityDropdown';
 
 const AddTripForm: React.FC = () => {
     const dispatch = useDispatch();
-  const { tripName, destination, startDate, endDate, imagePreview } = useSelector(
-    (state: RootState) => state.trip
-  );
+    const { tripName, destination, startDate, endDate, imagePreview } = useSelector(
+        (state: RootState) => state.trip
+    );
 
 
-  const { mutate, isPending } = useSaveTrip();
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    dispatch(setTripDetails({ [name]: value }));
-  };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const previewUrl = URL.createObjectURL(file);
-      dispatch(setTripDetails({ imagePreview: previewUrl }));
-    }
-  };
+    const [inputValue, setInputValue] = useState('');
+    const [showDropdown, setShowDropdown] = useState(false);
 
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    mutate({ tripName, destination, startDate, endDate, imagePreview });
-  };
+    // Get city options from the API
+    const { data: cityOptions, isLoading } = useCityAutocomplete(inputValue);
+
+    const handleCitySelect = (city: string) => {
+        setInputValue(city);
+        dispatch(setTripDetails({ destination: city }));
+        setShowDropdown(false);
+    };
+
+    const handleCityInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setInputValue(value);  // Update local input value state
+        setShowDropdown(true); // Show the dropdown when typing
+    };
+
+    const hideDropdown = () => {
+        setShowDropdown(false);
+    };
+
+    const { mutate, isPending } = useSaveTrip();
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        dispatch(setTripDetails({ [name]: value }));
+    };
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            const previewUrl = URL.createObjectURL(file);
+            dispatch(setTripDetails({ imagePreview: previewUrl }));
+        }
+    };
+
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        mutate({
+            tripName, destination, startDate, endDate, imagePreview,
+            _id: ''
+        });
+    };
 
 
 
@@ -40,10 +69,10 @@ const AddTripForm: React.FC = () => {
     return (
         <MainLayout>
 
-    <form
-        onSubmit={handleSubmit}
-        className="max-w-5xl md:ml-28 mx-auto p-6 flex flex-col bg-white shadow-sm rounded-lg"
-      >
+            <form
+                onSubmit={handleSubmit}
+                className="max-w-5xl md:ml-28 mx-auto p-6 flex flex-col bg-white shadow-sm rounded-lg"
+            >
                 <h1 className="text-2xl font-bold mb-8">Add Trip</h1>
                 <div className="flex flex-col md:flex-row gap-8">
                     {/* Form Section */}
@@ -64,14 +93,20 @@ const AddTripForm: React.FC = () => {
                                 placeholder="Enter trip name"
                                 required
                             />
-                            <InputField
-                                label="Destination City"
-                                type="text"
-                                name="destination"
-                                value={destination}
-                                onChange={handleInputChange}
-                                placeholder="Enter destination"
-                                required
+
+                            <CityDropdown
+                                inputValue={inputValue}
+                                labelName='Destination City'
+                                name='destination'
+                                placeholder='Enter destination'
+                                onInputChange={handleCityInputChange}
+                                isLoading={isLoading}
+                                cityOptions={cityOptions || []}
+                                onCitySelect={handleCitySelect}
+                                hideDropdown={hideDropdown}
+                                showDropdown={showDropdown}
+                                required={true}
+
                             />
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <InputField
@@ -139,7 +174,7 @@ const AddTripForm: React.FC = () => {
                             !endDate || isPending
                         }
                     >
-                             {isPending ? 'Saving...' : 'Save'}
+                        {isPending ? 'Saving...' : 'Save'}
                     </button>
                 </div>
             </form>
