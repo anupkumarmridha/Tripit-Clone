@@ -1,8 +1,8 @@
 import jwt from 'jsonwebtoken';
 
 class JwtService {
-  public generateToken(email: string, expiresIn: string = '1d'): string {
-    return jwt.sign({ email }, process.env.JWT_SECRET as string, { expiresIn });
+  public generateToken(id: string, expiresIn: string = '30d'): string {
+    return jwt.sign({ id }, process.env.JWT_SECRET as string, { expiresIn });
   }
 
   public verifyToken(token: string): any {

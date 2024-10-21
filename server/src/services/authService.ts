@@ -11,7 +11,7 @@ class AuthService {
     const user = new User({ email, password: hashedPassword, homeCity });
     await user.save();
 
-    const token = JwtService.generateToken(email);
+    const token = JwtService.generateToken(user.id);
     return { user, token };
   }
 
@@ -22,7 +22,7 @@ class AuthService {
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) throw new Error("Invalid email or password");
 
-    const token = JwtService.generateToken(email); 
+    const token = JwtService.generateToken(user.id); 
     return { user, token };
   }
 }
